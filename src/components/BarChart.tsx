@@ -1,29 +1,21 @@
 import type { EChartsOption } from "echarts";
 import ReactECharts from "echarts-for-react";
-import renderToString from "~/utils";
+import { renderToString } from "~/utils";
 import { Tooltip } from "./Tooltip";
 
 interface BarChartComponentProps {
   className?: string;
+  data: ({ date: string; value: number | null } | null)[];
 }
 
-export const BarChartComponent = ({ className }: BarChartComponentProps) => {
+export const BarChartComponent = ({
+  className,
+  data,
+}: BarChartComponentProps) => {
   const option: EChartsOption = {
     xAxis: {
       type: "category",
-      data: [
-        "Apr, 27",
-        "Apr, 29",
-        "May, 01",
-        "May, 04",
-        "May, 07",
-        "May, 10",
-        "May, 13",
-        "May, 16",
-        "May, 19",
-        "May, 22",
-        "May, 25",
-      ],
+      data: data.map((d) => d?.date ?? ""),
       splitLine: {
         show: true,
         lineStyle: {
@@ -54,7 +46,7 @@ export const BarChartComponent = ({ className }: BarChartComponentProps) => {
     },
     series: [
       {
-        data: [0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 3],
+        data: data.map((d) => (d?.value ? d.value : 0)),
         type: "bar",
         stack: "x",
         name: "run 1",
