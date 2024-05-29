@@ -125,7 +125,6 @@ export const BarChartComponent = ({
     tooltip: {
       trigger: "item",
       formatter: (params: { data: number; color: string }) => {
-        console.log(option);
         const value = params.data;
         const color = params.color;
         return renderToString(<Tooltip value={value} color={color} />);
