@@ -35,10 +35,10 @@ export const BarChartComponent = ({
                 height: 323,
               },
               style: {
-                fill: new graphic.RadialGradient(0.5, 0.5, 3, [
+                fill: new graphic.RadialGradient(0.5, 0.5, 2, [
                   {
                     offset: 0,
-                    color: "rgba(0, 0, 0, 0.5)",
+                    color: "transparent",
                   },
                   {
                     offset: 1,
