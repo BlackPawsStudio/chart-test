@@ -11,11 +11,7 @@ export const renderToString = (children: ReactNode) => {
   return div.innerHTML;
 };
 
-export const generateFormattedDates = (
-  month: number,
-  year: number,
-  days?: ({ value: number; day: number } | undefined)[],
-) => {
+export const generateFormattedDates = (month: number, year: number) => {
   const dates = [];
 
   const daysInMonth = new Date(year, month + 1, 0).getDate();
@@ -33,8 +29,7 @@ export const generateFormattedDates = (
     const [month, dayString] = formatted.split(" ");
     if (!dayString) return null;
     const day = parseInt(dayString, 10);
-    const value = days?.find((d) => d?.day === day)?.value ?? null;
-    return { date: `${month}, ${day}`, value: value };
+    return `${month}, ${day}`;
   });
 
   return formattedDates;
